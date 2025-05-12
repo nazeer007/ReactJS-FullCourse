@@ -1,13 +1,30 @@
 import './App.css'
 import ClassBasedComponent from './components/class-based-components';
 import FunctionalComponent from './components/functional-component';
+import ProductList from './components/products/products-list';
+import Posts from './props/posts';
+import postsData from './props/posts-data';
+
+const dummyProductData = ['Product 1', 'Product 2', 'Product 3'];
 
 function App() {
   return (
     <div>
       <h1>React Js Concepts</h1>
-      <ClassBasedComponent />
-      <FunctionalComponent />
+      <ProductList 
+        listOfProducts = {dummyProductData}
+        name = "Nazeer"
+        city = "ABC"
+      />
+      {postsData.map((eachObj) => {
+        const {id, title, body} = eachObj;
+        return <Posts 
+          key={id} 
+          id={id}
+          title={title}
+          body={body}
+        />
+      })}
     </div>
   );
 }

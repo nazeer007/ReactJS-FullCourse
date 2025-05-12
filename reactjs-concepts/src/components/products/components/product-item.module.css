@@ -1,0 +1,13 @@
+.buttonStyle {
+    background-color: black;
+    font-weight: bolder;
+    font-size: 10px;
+    color: white;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.productTitle {
+    font-size: 15px;
+    color: rgb(238, 85, 24);
+}

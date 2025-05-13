@@ -4,6 +4,8 @@ import FunctionalComponent from './components/functional-component';
 import ProductList from './components/products/products-list';
 import Posts from './props/posts';
 import postsData from './props/posts-data';
+import StateDemo from './state and setState/example1';
+import UseStateUseEffectDemo from './useState-useEffect/demo1';
 
 const dummyProductData = ['Product 1', 'Product 2', 'Product 3'];
 
@@ -25,6 +27,9 @@ function App() {
           body={body}
         />
       })}
+      <ClassBasedComponent />
+      <StateDemo />
+      <UseStateUseEffectDemo />
     </div>
   );
 }

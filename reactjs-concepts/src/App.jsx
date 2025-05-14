@@ -2,6 +2,7 @@ import './App.css'
 import ClassBasedComponent from './components/class-based-components';
 import FunctionalComponent from './components/functional-component';
 import ProductList from './components/products/products-list';
+import Users from './components/users';
 import Posts from './props/posts';
 import postsData from './props/posts-data';
 import StateDemo from './state and setState/example1';
@@ -13,7 +14,7 @@ function App() {
   return (
     <div>
       <h1>React Js Concepts</h1>
-      <ProductList 
+      {/* <ProductList 
         listOfProducts = {dummyProductData}
         name = "Nazeer"
         city = "ABC"
@@ -29,7 +30,8 @@ function App() {
       })}
       <ClassBasedComponent />
       <StateDemo />
-      <UseStateUseEffectDemo />
+      <UseStateUseEffectDemo /> */}
+      <Users />
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import './App.css'
 import ClassBasedComponent from './components/class-based-components';
+import ContextButtonComponent from './components/context-concept/button';
+import ContextTextComponent from './components/context-concept/text';
 import FunctionalComponent from './components/functional-component';
 import ProductList from './components/products/products-list';
 import Users from './components/users';
@@ -33,7 +35,11 @@ function App() {
       <StateDemo />
       <UseStateUseEffectDemo /> */}
       {/* <Users /> */}
-      <Products />
+      {/* <Products /> */}
+
+      <ContextButtonComponent />
+      <ContextTextComponent />
+
     </div>
   );
 }

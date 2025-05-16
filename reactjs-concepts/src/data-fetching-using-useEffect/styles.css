@@ -1,0 +1,19 @@
+.products {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2rem;
+    margin-top: 20px;
+}
+.product-item {
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 2px 3px 0px rgb(95, 241, 249);
+}
+
+.product-item img {
+    height: 150px;
+}
+
+.product-item:hover {
+    transform: scale(1.02);
+}

@@ -4,6 +4,7 @@ import ContextButtonComponent from './components/context-concept/button';
 import ContextTextComponent from './components/context-concept/text';
 import FunctionalComponent from './components/functional-component';
 import ProductList from './components/products/products-list';
+import UseReducerExample from './components/use-reducer/uuse-reducer';
 import Users from './components/users';
 import Products from './data-fetching-using-useEffect/data-fetching';
 import Posts from './props/posts';
@@ -37,8 +38,10 @@ function App() {
       {/* <Users /> */}
       {/* <Products /> */}
 
-      <ContextButtonComponent />
-      <ContextTextComponent />
+      {/* <ContextButtonComponent />
+      <ContextTextComponent /> */}
+
+      <UseReducerExample />
 
     </div>
   );

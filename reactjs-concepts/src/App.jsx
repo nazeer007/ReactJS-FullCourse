@@ -2,6 +2,7 @@ import './App.css'
 import ClassBasedComponent from './components/class-based-components';
 import ContextButtonComponent from './components/context-concept/button';
 import ContextTextComponent from './components/context-concept/text';
+import FormComponent from './components/form';
 import FunctionalComponent from './components/functional-component';
 import ProductList from './components/products/products-list';
 import UseReducerExample from './components/use-reducer/uuse-reducer';
@@ -17,7 +18,7 @@ import UseStateUseEffectDemo from './useState-useEffect/demo1';
 function App() {
   return (
     <div>
-      <h1>React Js Concepts</h1>
+      <h1 className='title'>React Js Concepts</h1>
       {/* <ProductList 
         listOfProducts = {dummyProductData}
         name = "Nazeer"
@@ -41,7 +42,11 @@ function App() {
       {/* <ContextButtonComponent />
       <ContextTextComponent /> */}
 
-      <UseReducerExample />
+      {/* <UseReducerExample /> */}
+      <div>
+        <FormComponent />
+      </div>
+      
 
     </div>
   );

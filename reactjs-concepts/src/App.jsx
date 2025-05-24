@@ -4,7 +4,9 @@ import ContextButtonComponent from './components/context-concept/button';
 import ContextTextComponent from './components/context-concept/text';
 import FormComponent from './components/form';
 import FunctionalComponent from './components/functional-component';
+import LoginComponent from './components/login/login';
 import ProductList from './components/products/products-list';
+import RegisterComponent from './components/register/register';
 import UseReducerExample from './components/use-reducer/uuse-reducer';
 import Users from './components/users';
 import Products from './data-fetching-using-useEffect/data-fetching';
@@ -17,7 +19,7 @@ import UseStateUseEffectDemo from './useState-useEffect/demo1';
 
 function App() {
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center' }}>
       <h1 className='title'>React Js Concepts</h1>
       {/* <ProductList 
         listOfProducts = {dummyProductData}
@@ -43,8 +45,13 @@ function App() {
       <ContextTextComponent /> */}
 
       {/* <UseReducerExample /> */}
-      <div>
+      {/* <div>
         <FormComponent />
+      </div> */}
+
+      <div style={{display: 'flex', gap: '20px'}}>
+        <LoginComponent />
+        <RegisterComponent />
       </div>
       
 

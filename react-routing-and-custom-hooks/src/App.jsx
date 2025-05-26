@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Link, Route, Routes, useNavigate, useRoutes } from "react-router-dom";
+import "./App.css";
+import CommentsList from "./pages/comments";
+import RecipeList from "./pages/recipes";
+import RecipeDetailsPage from "./pages/recipe-details";
+import NotFoundPage from "./pages/not-found";
+import Layout from "./pages/components/layout";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function CustomRoutes() {
+  const element = useRoutes([
+    {
+      path: '/home', element: <Layout />,
+      children : [
+        {
+          path: 'recipe-list', element: <RecipeList/>
+        },
+        {
+          path: 'comments-list', element: <CommentsList/>
+        },
+        {
+          path: 'recipe-list/:id', element: <RecipeDetailsPage/>
+        }
+      ]
+    },
+    {
+      path: '*', element: <NotFoundPage/>
+    }
+  ]);
+  return element;
 }
 
-export default App
+function App() {
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h1>React routing, Custom hooks and more</h1>
+      <div>
+        <Link to={"/recipe-list"}>
+          Alternative way og navigating to recipe list page
+        </Link>
+      </div>
+      <button
+        onClick={() => navigate("/home/recipe-list")}
+        style={{ backgroundColor: "black", color: "white" }}
+      >
+        Navigate to Recipe list page
+      </button>
+      <button
+        onClick={() => navigate("/home/comments-list")}
+        style={{ backgroundColor: "black", color: "white" }}
+      >
+        Navigate to Comments list page
+      </button>
+      {/* <Routes>
+        <Route path="/home" element={<Layout />}>
+          <Route path="recipe-list" element={<RecipeList />} />
+          <Route path="comments-list" element={<CommentsList />} />
+          <Route path="recipe-list/:id" element={<RecipeDetailsPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes> */}
+      <CustomRoutes />
+    </div>
+  );
+}
+
+export default App;

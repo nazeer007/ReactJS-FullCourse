@@ -9,6 +9,7 @@ import ReactHookFormExample from "./pages/react-hook-form";
 import Hooks from "./pages/hooks";
 import UseMemoExample from "./pages/use-memo-example";
 import UseCallbackExample from "./pages/use-callback-example";
+import ReactQueryDemo from "./pages/react-query";
 
 function CustomRoutes() {
   const element = useRoutes([
@@ -41,6 +42,14 @@ function CustomRoutes() {
     {
       path: "/hooks",
       element: <Hooks />,
+    },
+    {
+      path: "/memo",
+      element: <UseMemoExample />,
+    },
+    {
+      path: "/react-query-demo",
+      element: <ReactQueryDemo />,
     },
   ]);
   return element;
@@ -79,7 +88,8 @@ function App() {
       </Routes> */}
       {/* <CustomRoutes /> */}
       {/* <UseMemoExample /> */}
-      <UseCallbackExample />
+      {/* <UseCallbackExample /> */}
+      <ReactQueryDemo />
     </div>
   );
 }

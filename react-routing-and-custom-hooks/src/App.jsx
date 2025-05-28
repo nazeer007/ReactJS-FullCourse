@@ -5,26 +5,36 @@ import RecipeList from "./pages/recipes";
 import RecipeDetailsPage from "./pages/recipe-details";
 import NotFoundPage from "./pages/not-found";
 import Layout from "./pages/components/layout";
+import ReactHookFormExample from "./pages/react-hook-form";
 
 function CustomRoutes() {
   const element = useRoutes([
     {
-      path: '/home', element: <Layout />,
-      children : [
+      path: "/home",
+      element: <Layout />,
+      children: [
         {
-          path: 'recipe-list', element: <RecipeList/>
+          path: "recipe-list",
+          element: <RecipeList />,
         },
         {
-          path: 'comments-list', element: <CommentsList/>
+          path: "comments-list",
+          element: <CommentsList />,
         },
         {
-          path: 'recipe-list/:id', element: <RecipeDetailsPage/>
-        }
-      ]
+          path: "recipe-list/:id",
+          element: <RecipeDetailsPage />,
+        },
+      ],
     },
     {
-      path: '*', element: <NotFoundPage/>
-    }
+      path: "*",
+      element: <NotFoundPage />,
+    },
+    {
+      path: "/react-hook-form",
+      element: <ReactHookFormExample />,
+    },
   ]);
   return element;
 }

@@ -1,32 +1,38 @@
-import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { ShoppingCartContext } from "../../context";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const { productDetails, setProductDetails, loading, setLoading } =
+  const navigate = useNavigate();
+  const { setProductDetails, handleAddToCart, cartItems } =
     useContext(ShoppingCartContext);
-  console.log(id);
+
+  const [productDetails, setLocalProductDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   async function fetchProductDetails() {
-    const apiResponse = await fetch(`https://dummyjson.com/products/${id}`);
-    const result = await apiResponse.json();
-    // console.log(result);
-    if (result) {
-      setProductDetails(result);
+    try {
+      const apiResponse = await fetch(`https://dummyjson.com/products/${id}`);
+      const result = await apiResponse.json();
+      if (result) {
+        setLocalProductDetails(result);
+        setProductDetails(result); // update context if needed elsewhere
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Failed to fetch product", error);
       setLoading(false);
     }
-  }
-
-  if (loading) {
-    return <h3>Product Details Loading! Please wait</h3>;
   }
 
   useEffect(() => {
     fetchProductDetails();
   }, [id]);
 
-  console.log(productDetails);
+  if (loading || !productDetails) {
+    return <h3>Product Details Loading! Please wait</h3>;
+  }
 
   return (
     <div>
@@ -41,17 +47,15 @@ export default function ProductDetails() {
               />
             </div>
             <div className="mt-6 flex flex-wrap justify-center gap-6 mx-auto">
-              {productDetails?.images?.length
-                ? productDetails?.images?.map((imageItem) => (
-                    <div className="rounded-xl p-4 shadow-md" key={imageItem}>
-                      <img
-                        className="w-24 cursor-pointer"
-                        src={imageItem}
-                        alt="Product Secondary image"
-                      />
-                    </div>
-                  ))
-                : null}
+              {productDetails?.images?.map((imageItem) => (
+                <div className="rounded-xl p-4 shadow-md" key={imageItem}>
+                  <img
+                    className="w-24 cursor-pointer"
+                    src={imageItem}
+                    alt="Product Secondary"
+                  />
+                </div>
+              ))}
             </div>
           </div>
           <div className="lg:col-span-2">
@@ -60,7 +64,17 @@ export default function ProductDetails() {
               <p className="text-xl font-semibold">${productDetails?.price}</p>
             </div>
             <div>
-              <button className="mt-5 min-w-[200px] px-4 py-3 border border-[#333] bg-transparent text-sm font-semibold rounded">
+              <button
+                disabled={
+                  productDetails
+                    ? cartItems.findIndex(
+                        (item) => item.id === productDetails.id
+                      ) > -1
+                    : false
+                }
+                onClick={() => handleAddToCart(productDetails)}
+                className="disabled:opacity-65 mt-5 min-w-[200px] px-4 py-3 border border-[#333] bg-transparent text-sm font-semibold rounded"
+              >
                 Add to cart
               </button>
             </div>
